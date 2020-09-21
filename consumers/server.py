@@ -55,7 +55,7 @@ def run_server():
     application = tornado.web.Application(
         [(r"/", MainHandler, {"weather": weather_model, "lines": lines})]
     )
-    application.listen(8888)
+    application.listen(8889)
 
     # Build kafka consumers
     consumers = [
@@ -71,7 +71,7 @@ def run_server():
             is_avro=False,
         ),
         KafkaConsumer(
-            "com.udacity.cta.arrival",
+            "^com.udacity.cta.arrival.",
             lines.process_message,
             offset_earliest=True,
         ),
@@ -85,7 +85,7 @@ def run_server():
 
     try:
         logger.info(
-            "Open a web browser to http://localhost:8888 to see the Transit Status Page"
+            "Open a web browser to http://localhost:8889 to see the Transit Status Page"
         )
         for consumer in consumers:
             tornado.ioloop.IOLoop.current().spawn_callback(consumer.consume)

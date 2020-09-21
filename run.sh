@@ -1,4 +1,5 @@
 docker-compose down
+ulimit -n 4096
 echo "docker off"
 source ~/commonenv/bin/activate
 docker-compose up &

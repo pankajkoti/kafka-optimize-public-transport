@@ -26,7 +26,7 @@ class Station(Producer):
                 .replace("-", "_")
                 .replace("'", "")
         )
-        topic_name = f"com.udacity.cta.arrival"
+        topic_name = f"com.udacity.cta.arrival.{station_name}"
         super().__init__(
             topic_name,
             key_schema=Station.key_schema,
