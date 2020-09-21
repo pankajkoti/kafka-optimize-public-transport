@@ -27,6 +27,7 @@ class Line:
         if value["line"] != self.color:
             return
         self.stations[value["station_id"]] = Station.from_message(value)
+        print(self.stations)
 
     def _handle_arrival(self, message):
         """Updates train locations"""

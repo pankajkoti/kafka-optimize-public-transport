@@ -20,7 +20,7 @@ class Lines:
         """Processes a station message"""
         if "com.udacity.cta.stations" in message.topic():
             value = message.value()
-            if message.topic() == "org.chicago.cta.stations.table.v1":
+            if message.topic() == "com.udacity.cta.stations.table":
                 value = json.loads(value)
             if value["line"] == "green":
                 self.green_line.process_message(message)

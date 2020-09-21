@@ -49,6 +49,7 @@ class Line:
         curr_loc = 0
         b_dir = True
         for train_id in range(self.num_trains):
+            print(train_id)
             tid = str(train_id).zfill(3)
             train = Train(
                 f"{self.color.name[0].upper()}L{tid}", Train.status.in_service
